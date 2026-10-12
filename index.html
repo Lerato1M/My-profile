@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lerato Maleke | Software Developer Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-maroon: #800020;
+            --dark-maroon: #5c0017;
+            --light-maroon: #f9f1f2;
+            --accent-red: #a31c3b;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-white: #ffffff;
+            --bg-offwhite: #fdfbfb;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-offwhite);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(128, 0, 32, 0.08);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-maroon);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-maroon);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-maroon);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 5rem;
+            background: linear-gradient(135deg, var(--light-maroon) 0%, var(--bg-white) 100%);
+            border-bottom: 3px solid var(--primary-maroon);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            color: var(--primary-maroon);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero-content h2 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .contact-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .contact-badges span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-badges i {
+            color: var(--primary-maroon);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.8rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-maroon);
+            color: var(--bg-white);
+            border: 2px solid var(--primary-maroon);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-maroon);
+            border-color: var(--dark-maroon);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-maroon);
+            border: 2px solid var(--primary-maroon);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--light-maroon);
+        }
+
+        .hero-image {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .profile-frame {
+            width: 260px;
+            height: 320px;
+            border: 6px solid var(--primary-maroon);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(128, 0, 32, 0.15);
+            background-color: #ddd;
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-maroon);
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-maroon);
+        }
+
+        /* Profile Summary */
+        .profile-card {
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border-left: 5px solid var(--primary-maroon);
+        }
+
+        .profile-card p {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .profile-highlights {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .profile-highlights li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .profile-highlights li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-maroon);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Technical Proficiencies */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--bg-white);
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-top: 3px solid var(--primary-maroon);
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: var(--primary-maroon);
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            background-color: var(--light-maroon);
+            color: var(--primary-maroon);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Experience & Education Timelines */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--primary-maroon);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--bg-white);
+            border: 3px solid var(--primary-maroon);
+        }
+
+        .timeline-content {
+            background: var(--bg-white);
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary-maroon);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* Projects Portfolio */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-bottom: 4px solid var(--primary-maroon);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-maroon);
+            margin-bottom: 1rem;
+        }
+
+        .project-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-list li {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .project-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-maroon);
+        }
+
+        /* Awards & References */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            height: 100%;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-maroon);
+            margin-bottom: 1.5rem;
+        }
+
+        .ref-item {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .ref-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .ref-item h4 {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 0.2rem;
+        }
+
+        .ref-item p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-maroon);
+            color: var(--bg-white);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--bg-white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--light-maroon);
+        }
+
+        /* Responsive Design */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-white);
+                padding: 1.5rem 2rem;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .contact-badges {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="nav-container">
+            <a href="#" class="logo">Lerato Maleke</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">References</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container fade-in">
+            <div class="hero-content">
+                <h1>Lerato Maleke</h1>
+                <h2>Software Developer</h2>
+                <div class="contact-badges">
+                    <span><i class="fas fa-phone"></i> +27 82 469 4508</span>
+                    <span><i class="fas fa-envelope"></i> leratomaleke.m@gmail.com</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Evaton West, SA</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="https://leratomaleke-portfolio.netlify.app" target="_blank" class="btn btn-outline">Live Portfolio</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-frame">
+                    <!-- Replace the src attribute with your photo URL or relative path if needed -->
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Lerato Maleke Profile Picture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="container">
+
+        <!-- Professional Profile Section -->
+        <section id="about" class="fade-in">
+            <h2 class="section-title">Professional Profile</h2>
+            <div class="profile-card">
+                <p>Throughout my career journey, I have honed my presentation skills, delivering compelling presentations with effective visual aids. I excel in conveying complex technical information clearly, ensuring continuous audience engagement and a seamless user experience. I embrace constructive feedback from mentors, demonstrating a growth mindset and a strong commitment to continuous improvement, technical excellence, and professional development.</p>
+                <ul class="profile-highlights">
+                    <li><strong>Portfolio Presentation:</strong> I effectively showcase a professional portfolio with clear, organized content, demonstrating attention to detail and transparency with prospective employers[cite: 1].</li>
+                    <li><strong>Strategic Career Planning:</strong> I take a proactive approach to career development, exhibiting strong self-awareness, ambition, and a well-defined path for professional growth within software development[cite: 1].</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technical Proficiencies Section -->
+        <section id="skills" class="fade-in">
+            <h2 class="section-title">Technical Proficiencies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Front-end Frameworks & Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="tag">React.js</span>
+                        <span class="tag">Bootstrap</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Version Control</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Visual Studio Code</span>
+                        <span class="tag">Command Line</span>
+                        <span class="tag">RESTful APIs</span>
+                        <span class="tag">Networks</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Methodologies & Practices</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Agile Development</span>
+                        <span class="tag">Scrum</span>
+                        <span class="tag">Information Systems</span>
+                        <span class="tag">DevOps Principles</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="fade-in">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Call Center Agent (Freelance)</h3>
+                        <h4>Call on Me Marketing (2025)[cite: 1]</h4>
+                        <p>Managed outbound and inbound communications alongside resolving customer queries in a fast-paced environment[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Academic Support (Freelance)</h3>
+                        <h4>Livingston Research (2021-2023 & 2017-2019)[cite: 1]</h4>
+                        <p>Provided high-level academic assistance, comprehensive research support, and educational guidance across various subjects[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Tutor</h3>
+                        <h4>Smart Culture Education (2020-2021)[cite: 1]</h4>
+                        <p>Delivered targeted academic tutoring to improve student comprehension, performance, and overall classroom confidence[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Future Force Direct Marketer</h3>
+                        <h4>HMD (2016)[cite: 1]</h4>
+                        <p>Executed direct marketing strategies to promote brand awareness and drive successful customer acquisition[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Extra School Support Homework Assistant</h3>
+                        <h4>Tsokolibane Primary School (2015)[cite: 1]</h4>
+                        <p>Assisted young learners with their daily homework assignments, helping reinforce core classroom concepts after school hours[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Cashier</h3>
+                        <h4>Picadilly (2014-2015)[cite: 1]</h4>
+                        <p>Handled point-of-sale transactions, managed daily cash flow, and provided excellent face-to-face customer service[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>IsiZulu Translator</h3>
+                        <h4>Tarryn J Sparg (UKZN Masters Student) (2014)[cite: 1]</h4>
+                        <p>Provided precise language translation services to support specialized audiology research and field communication[cite: 1].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications Section -->
+        <section id="education" class="fade-in">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Systems Development</h3>
+                        <h4>Dynamic DNA (May 2026 - Apr 2027) — In Progress[cite: 1]</h4>
+                        <p>Currently engaging in core modules including Information Systems, C#, Networks, Web Development, English, and Mathematics[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Microsoft+ 360 Copilot Certificate</h3>
+                        <h4>Microsoft+ 360 (2025)[cite: 1]</h4>
+                        <p>Mastered AI-driven productivity workflows, prompt engineering, and digital workspace optimization[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Foundations of Digital Marketing Certification</h3>
+                        <h4>Udacity (2025)[cite: 1]</h4>
+                        <p>Training covered Marketing Fundamentals, Digital Marketing Framework, Business Value, Customers, Marketing Channels, Objectives & Performance, Content Strategy, and Digital Marketing Roles[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Software Development Curriculum</h3>
+                        <h4>CodeSpace Academy (Completed 2024)[cite: 1]</h4>
+                        <p>Completed Software Development Fundamentals (SDF), Career Development Curriculum, JavaScript Language (JSL), and Dynamic JavaScript (DJS). Developed key front-end tracking mechanisms, Git competencies, and responsive design principles[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>A Sensory Approach to Montessori Teaching</h3>
+                        <h4>Alison (2022)[cite: 1]</h4>
+                        <p>Studied early childhood development methodologies focused on sensory and child-led learning. *(Certificate yet to be claimed)*[cite: 1]</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Teaching Intermediate Phase</h3>
+                        <h4>Cambridge International Education (2019)[cite: 1]</h4>
+                        <p>Earned professional certification focused on curriculum delivery and instructional design for the intermediate phase[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Bachelor of Education (Intermediate & Senior Phase)</h3>
+                        <h4>University of South Africa (UNISA) (2016-2018)[cite: 1]</h4>
+                        <p>Completed bridging modules after transferring from Wits University, officially majoring in History during my third year[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Shadowing Audiologists</h3>
+                        <h4>Sebokeng Hospital (2015)[cite: 1]</h4>
+                        <p>Gained clinical exposure by observing diagnostic procedures and patient interactions within the audiology department[cite: 1].</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Bachelor of Education</h3>
+                        <h4>Wits University (2013-2014)[cite: 1]</h4>
+                        <p>Successfully completed my first and second years of study, earning a distinction in IsiZulu[cite: 1].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Portfolio Section -->
+        <section id="projects" class="fade-in">
+            <h2 class="section-title">Projects Portfolio</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <h3>CodeSpace Projects (SDF & JSL)</h3>
+                        <ul class="project-list">
+                            <li><strong>SDF01:</strong> CodeSpace Cat HTML Portfolio - achieved strong performance, meeting all project requirements[cite: 1].</li>
+                            <li><strong>SDF02:</strong> CodeSpace Cafe CSS Debugging - showcased excellent CSS debugging skills and design consistency[cite: 1].</li>
+                            <li><strong>SDF03:</strong> Git Understanding Assessment - indicated a solid understanding of version control systems[cite: 1].</li>
+                            <li><strong>SDFMC:</strong> Mastery Checkpoint - demonstrated comprehensive application of fundamental course concepts[cite: 1].</li>
+                            <li><strong>JSL01:</strong> Syntax-Engine Interaction - demonstrated proficiency in JavaScript syntax, input validation, and debugging[cite: 1].</li>
+                            <li><strong>JSL02:</strong> Debugging Duplicate Goals - exhibited excellent performance in DOM manipulation and core logical reasoning[cite: 1].</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div>
+                        <h3>Career Development Milestones</h3>
+                        <ul class="project-list">
+                            <li><strong>CDV_02:</strong> GitHub Profile README - enhanced professional branding, layout completeness, readability, and Markdown proficiency[cite: 1].</li>
+                            <li><strong>CDV_03:</strong> Career Goals Reflection - completed a thorough self-assessment and strategic planning session to set achievable milestones[cite: 1].</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards & References Section -->
+        <section id="contact" class="fade-in">
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3>Awards & Mentorships</h3>
+                    <ul class="project-list" style="margin-bottom:0;">
+                        <li>Selected as an official Digiata Mentee for the competitive 2024 cohort[cite: 1].</li>
+                        <li>Received an official Letter of Recommendation from Smart Culture Education in 2022 for outstanding performance as a tutor[cite: 1].</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>References</h3>
+                    <div class="ref-item">
+                        <h4>Mrs. L. Lethoba</h4>
+                        <p>Principal, Tsokolibane Primary</p>
+                        <p>Phone: 021 685 0991 | Email: tsokolibanep@yahoo.com[cite: 1]</p>
+                    </div>
+                    <div class="ref-item">
+                        <h4>Meisi Modiga</h4>
+                        <p>Representative, CodeSpace</p>
+                        <p>Phone: 021 685 0991 | Email: meisi@codespace.co.za[cite: 1]</p>
+                    </div>
+                    <div class="ref-item">
+                        <h4>Anel Grey</h4>
+                        <p>Manager, Smart Culture Education</p>
+                        <p>Phone: 076 838 5145 | Email: info@smartculture-education.com[cite: 1]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/lerato-maleke-2b6354105" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Lerato1M" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:leratomaleke.m@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2026 Lerato Maleke. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll enhancement & active section observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
